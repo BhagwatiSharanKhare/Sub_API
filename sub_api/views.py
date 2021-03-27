@@ -8,7 +8,7 @@ class SubjectApiView(APIView):
         data = request.data
         print(data)
         highestEducation = data['highestEducation']
-        if(highestEducation == '9' or highestEducation == '10'):
+        if(highestEducation == '9th' or highestEducation == '10th'):
             return Response({
             'success':True,
             'result': {
@@ -17,12 +17,21 @@ class SubjectApiView(APIView):
             'resetList' : [],
             'errorMessageKey' : 'Error_Response'
         })
-        elif(highestEducation == '11' or highestEducation == '12'):
+        elif(highestEducation == '11th' or highestEducation == '12th'):
             return Response({
             'success':True,
             'result': {
-                'subjectChooser' : "That's great!!! Please enter your favourite subject? [[EXT:BUTTON|Maths|Biology|Chemistry|Physics|Computer Science|Economics|English|Geography|History|Civics|Sports]]",
+                'subjectChooser' : "That's great!!! Please enter your favourite subject? [[EXT:BUTTON|PCM|PCB|Commerce|Arts|Sports]]",
                 },
                 'resetList' : [],
                 'errorMessageKey' : 'Error_Response'
+    })
+        else:
+            return Response({
+            'success':True,
+            'result': {
+                'subjectChooser' : "",
+                },
+                'resetList' : ["highestEducation"],
+                'errorMessageKey' : ''
     })
